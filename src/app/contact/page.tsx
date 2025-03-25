@@ -21,7 +21,7 @@ export default function Contact() {
               Свяжитесь с нами
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              У вас есть вопросы или вы хотите обсудить ваш проект? Мы всегда рады помочь!
+              Хотите обсудить бесплатное создание сайта для вашего бизнеса? Наши специалисты готовы помочь с выбором оптимального тарифа подписки.
             </p>
           </motion.div>
         </div>
@@ -155,7 +155,7 @@ export default function Contact() {
                       name="name"
                       id="name"
                       autoComplete="given-name"
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </motion.div>
@@ -173,7 +173,7 @@ export default function Contact() {
                       name="email"
                       id="email"
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </motion.div>
@@ -191,7 +191,7 @@ export default function Contact() {
                       name="phone"
                       id="phone"
                       autoComplete="tel"
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </motion.div>
@@ -207,7 +207,7 @@ export default function Contact() {
                     <select
                       name="service"
                       id="service"
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                     >
                       <option value="">Выберите услугу</option>
                       <option value="landing">Лендинг</option>
@@ -232,7 +232,7 @@ export default function Contact() {
                       name="message"
                       id="message"
                       rows={4}
-                      className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </motion.div>

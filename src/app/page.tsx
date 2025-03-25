@@ -4,11 +4,181 @@ import { ArrowRightIcon, CheckCircleIcon, SparklesIcon, LightBulbIcon, ChatBubbl
 import { StarIcon } from '@heroicons/react/24/solid'
 import Portfolio from '@/components/Portfolio'
 import Testimonials from '@/components/Testimonials'
-import React from 'react'
+import React, { useState } from 'react'
+import Script from 'next/script'
 
 export default function Home() {
+  // Состояния для валидации формы
+  const [formData, setFormData] = useState<{
+    'first-name': string;
+    'phone': string;
+    'email': string;
+    'message': string;
+  }>({
+    'first-name': '',
+    'phone': '',
+    'email': '',
+    'message': ''
+  });
+  
+  const [formErrors, setFormErrors] = useState<{
+    'first-name'?: string;
+    'phone'?: string;
+    'email'?: string;
+    'message'?: string;
+  }>({});
+  
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formSubmitting, setFormSubmitting] = useState(false);
+
+  // Функция для валидации формы
+  const validateForm = () => {
+    const errors: {
+      'first-name'?: string;
+      'phone'?: string;
+      'email'?: string;
+      'message'?: string;
+    } = {};
+    
+    if (!formData['first-name'].trim()) {
+      errors['first-name'] = 'Пожалуйста, введите ваше имя';
+    }
+    
+    if (!formData['phone'].trim()) {
+      errors['phone'] = 'Пожалуйста, введите ваш телефон';
+    } else if (!/^(\+7|8)?[\s-]?\(?[489][0-9]{2}\)?[\s-]?[0-9]{3}[\s-]?[0-9]{2}[\s-]?[0-9]{2}$/.test(formData['phone'])) {
+      errors['phone'] = 'Введите корректный номер телефона';
+    }
+    
+    if (!formData['email'].trim()) {
+      errors['email'] = 'Пожалуйста, введите ваш email';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData['email'])) {
+      errors['email'] = 'Введите корректный email адрес';
+    }
+    
+    if (!formData['message'].trim()) {
+      errors['message'] = 'Пожалуйста, введите сообщение';
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  // Обработчик изменения полей формы
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+    
+    // Удаляем ошибку для этого поля, если она есть
+    if (formErrors[name as keyof typeof formErrors]) {
+      setFormErrors({
+        ...formErrors,
+        [name]: undefined
+      });
+    }
+  };
+
+  // Обработчик отправки формы
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
+    setFormSubmitting(true);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/myzekkqz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      
+      if (response.ok) {
+        setFormSubmitted(true);
+        setFormData({
+          'first-name': '',
+          'phone': '',
+          'email': '',
+          'message': ''
+        });
+        
+        // Показываем успешную отправку на 3 секунды, затем сбрасываем
+        setTimeout(() => {
+          setFormSubmitted(false);
+        }, 3000);
+      } else {
+        alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
+    } finally {
+      setFormSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen">
+      {/* JSON-LD structured data for SEO */}
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Tyzo - Бесплатное создание сайтов по подписке",
+            "url": "https://tyzo.ru/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://tyzo.ru/search?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            },
+            "description": "Бесплатная разработка лендингов, корпоративных сайтов и интернет-магазинов. Оплата только за подписку, включающую хостинг и техническое обслуживание.",
+            "keywords": "создать сайт, сайт бесплатно, сайт по подписке, цена сайта, бесплатные сайты, купить сайт, где купить сайт, купить официальный сайт"
+          })
+        }}
+      />
+      <Script
+        id="organization-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Tyzo",
+            "url": "https://tyzo.ru",
+            "logo": "https://tyzo.ru/icon.svg",
+            "description": "Компания, специализирующаяся на бесплатном создании сайтов с оплатой только за подписку.",
+            "offers": {
+              "@type": "Offer",
+              "description": "Бесплатная разработка сайта с ежемесячной подпиской от 2 900 ₽",
+              "price": "2900",
+              "priceCurrency": "RUB",
+              "availability": "https://schema.org/InStock"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+7-123-456-7890",
+              "contactType": "customer service",
+              "availableLanguage": "Russian"
+            },
+            "sameAs": [
+              "https://facebook.com/tyzo",
+              "https://twitter.com/tyzo",
+              "https://instagram.com/tyzo"
+            ]
+          })
+        }}
+      />
+      
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white">
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
@@ -40,7 +210,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
             >
-              Сайт по подписке. Выгода без рисков.
+              Сделаем сайт бесплатно.
             </motion.h1>
             <motion.p 
               className="mt-6 text-lg leading-8 text-gray-600"
@@ -48,7 +218,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
             >
-              Получите профессиональный сайт без вложений в инфраструктуру. Платите только за то, что используете. Весь хостинг и техническое обслуживание мы берём на себя. В любой момент можно отказаться от подписки без штрафов.
+              Получите профессиональный сайт без вложений в разработку. Мы создадим ваш сайт бесплатно, а вы платите только за ежемесячную подписку. Хостинг и техническое обслуживание включены. В любой момент можно отказаться от подписки без штрафов.
             </motion.p>
             <motion.div 
               className="mt-10 flex items-center gap-x-6"
@@ -81,8 +251,8 @@ export default function Home() {
           >
             <div className="max-w-2xl flex-none sm:max-w-3xl lg:max-w-none">
               <motion.img
-                src="https://images.unsplash.com/photo-1517292987719-0369a794ec0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80"
-                alt="Современный веб-дизайн"
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2344&q=80"
+                alt="Современные технологии веб-разработки"
                 width={1216}
                 height={721}
                 className="w-[56rem] rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10"
@@ -103,12 +273,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-base font-semibold leading-7 text-primary-600">Максимальная гибкость</h2>
+            <h2 className="text-base font-semibold leading-7 text-primary-600">Выгодное предложение</h2>
             <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Сайт, который растёт вместе с вашим бизнесом
+              Разработка сайта — бесплатно
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Подписочная модель позволяет легко масштабировать или сокращать услуги в зависимости от потребностей вашего бизнеса. Не нужно тратиться на инфраструктуру.
+              Вы не платите за создание сайта — только ежемесячную подписку. Подписка позволяет легко масштабировать функциональность в зависимости от потребностей вашего бизнеса. Никаких скрытых платежей и долгосрочных обязательств.
             </p>
           </motion.div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -162,10 +332,10 @@ export default function Home() {
           >
             <h2 className="text-base font-semibold leading-7 text-primary-600">Тарифы</h2>
             <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-              Прозрачная система оплаты
+              Бесплатная разработка и прозрачная оплата
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Выберите план подписки, который подходит вашему бизнесу. Все тарифы включают хостинг и техническую поддержку. Отменить можно в любой момент без штрафов.
+              Создание сайта бесплатно для любого тарифа. Выберите подходящий план подписки для вашего бизнеса. Все тарифы включают хостинг и техническую поддержку. Отменить можно в любой момент без штрафов.
             </p>
           </motion.div>
           <div className="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -283,84 +453,120 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.form 
-            action="https://formspree.io/f/myzekkqz" 
-            method="POST" 
-            className="mx-auto mt-16 max-w-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-              <div>
-                <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Имя
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
-                    autoComplete="given-name"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Телефон
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    autoComplete="tel"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Email
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    autoComplete="email"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
-                  Сообщение
-                </label>
-                <div className="mt-2.5">
-                  <textarea
-                    name="message"
-                    id="message"
-                    rows={4}
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-            </div>
+          {formSubmitted ? (
             <motion.div 
-              className="mt-10"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="mx-auto mt-16 max-w-xl rounded-lg bg-green-50 p-8 text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
             >
-              <button
-                type="submit"
-                className="block w-full rounded-md bg-primary-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-              >
-                Отправить
-              </button>
+              <CheckCircleIcon className="h-12 w-12 mx-auto text-green-500 mb-4" />
+              <h3 className="text-lg font-semibold text-gray-900">Спасибо за ваше сообщение!</h3>
+              <p className="mt-2 text-gray-600">Мы свяжемся с вами в ближайшее время.</p>
             </motion.div>
-          </motion.form>
+          ) : (
+            <motion.form 
+              onSubmit={handleSubmit}
+              className="mx-auto mt-16 max-w-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
+                    Имя
+                  </label>
+                  <div className="mt-2.5">
+                    <input
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      value={formData['first-name']}
+                      onChange={handleInputChange}
+                      autoComplete="given-name"
+                      className={`block w-full rounded-md border ${formErrors['first-name'] ? 'border-red-300' : 'border-gray-300'} px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ${formErrors['first-name'] ? 'ring-red-300' : 'ring-gray-300'} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6`}
+                    />
+                    {formErrors['first-name'] && (
+                      <p className="mt-1 text-sm text-red-600">{formErrors['first-name']}</p>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold leading-6 text-gray-900">
+                    Телефон
+                  </label>
+                  <div className="mt-2.5">
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      value={formData['phone']}
+                      onChange={handleInputChange}
+                      autoComplete="tel"
+                      className={`block w-full rounded-md border ${formErrors['phone'] ? 'border-red-300' : 'border-gray-300'} px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ${formErrors['phone'] ? 'ring-red-300' : 'ring-gray-300'} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6`}
+                    />
+                    {formErrors['phone'] && (
+                      <p className="mt-1 text-sm text-red-600">{formErrors['phone']}</p>
+                    )}
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+                    Email
+                  </label>
+                  <div className="mt-2.5">
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={formData['email']}
+                      onChange={handleInputChange}
+                      autoComplete="email"
+                      className={`block w-full rounded-md border ${formErrors['email'] ? 'border-red-300' : 'border-gray-300'} px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ${formErrors['email'] ? 'ring-red-300' : 'ring-gray-300'} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6`}
+                    />
+                    {formErrors['email'] && (
+                      <p className="mt-1 text-sm text-red-600">{formErrors['email']}</p>
+                    )}
+                  </div>
+                </div>
+                <div className="sm:col-span-2">
+                  <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
+                    Сообщение
+                  </label>
+                  <div className="mt-2.5">
+                    <textarea
+                      name="message"
+                      id="message"
+                      rows={4}
+                      value={formData['message']}
+                      onChange={handleInputChange}
+                      className={`block w-full rounded-md border ${formErrors['message'] ? 'border-red-300' : 'border-gray-300'} px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ${formErrors['message'] ? 'ring-red-300' : 'ring-gray-300'} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6`}
+                    />
+                    {formErrors['message'] && (
+                      <p className="mt-1 text-sm text-red-600">{formErrors['message']}</p>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <motion.div 
+                className="mt-10"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <button
+                  type="submit"
+                  disabled={formSubmitting}
+                  className={`block w-full rounded-md bg-primary-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 ${formSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                >
+                  {formSubmitting ? 'Отправка...' : 'Отправить'}
+                </button>
+              </motion.div>
+              <p className="mt-4 text-sm text-center text-gray-500">
+                Нажимая кнопку «Отправить», вы соглашаетесь с нашей <a href="#" className="font-semibold text-primary-600 hover:text-primary-500">политикой конфиденциальности</a>.
+              </p>
+            </motion.form>
+          )}
         </div>
       </section>
 
@@ -445,18 +651,18 @@ export default function Home() {
 
 const features = [
   {
+    name: 'Бесплатное создание сайта',
+    description: 'Мы разрабатываем ваш сайт абсолютно бесплатно. Вы платите только за подписку, которая включает хостинг и обслуживание. Никаких стартовых вложений в разработку.',
+    icon: SparklesIcon,
+  },
+  {
     name: 'Прозрачная модель подписки',
     description: 'Никаких скрытых платежей или долгосрочных обязательств. Платите только за то время, когда вам нужен сайт. Отменить подписку можно в любой момент.',
     icon: CheckCircleIcon,
   },
   {
-    name: 'Хостинг включён в стоимость',
-    description: 'Забудьте о дополнительных расходах на сервера и техническое обслуживание. Мы полностью берём на себя вопросы размещения и поддержки вашего сайта.',
-    icon: SparklesIcon,
-  },
-  {
-    name: 'Современный дизайн',
-    description: 'Эффектные и удобные сайты с адаптивным дизайном, оптимизированные для мобильных устройств и высокой скорости загрузки.',
+    name: 'Полное техническое обслуживание',
+    description: 'Забудьте о технических проблемах. Мы берём на себя все вопросы размещения, безопасности и поддержки вашего сайта. Обновления и улучшения включены в стоимость.',
     icon: LightBulbIcon,
   },
 ]
@@ -483,23 +689,23 @@ const steps = [
 const pricing = [
   {
     name: 'Базовый',
-    price: '4 900',
-    description: 'Идеально для малого бизнеса и стартапов.',
+    price: '2 900',
+    description: 'Бесплатное создание простого сайта для малого бизнеса и стартапов.',
     features: [
       'Одностраничный лендинг',
-      'Форма обратной связи',
       'Адаптивный дизайн',
       'Базовое SEO',
+      'Хостинг включен',
       'Ежемесячные обновления',
     ],
   },
   {
     name: 'Стандарт',
-    price: '9 900',
-    description: 'Идеально для растущего бизнеса.',
+    price: '7 900',
+    description: 'Бесплатная разработка функционального сайта для растущего бизнеса.',
     features: [
       'Многостраничный сайт',
-      'Формы обратной связи',
+      'Форма обратной связи',
       'Интеграция с мессенджерами',
       'Расширенное SEO',
       'Еженедельные обновления',
@@ -509,12 +715,12 @@ const pricing = [
   },
   {
     name: 'Премиум',
-    price: '19 900',
-    description: 'Для бизнеса, которому нужен полный каталог продуктов.',
+    price: '15 900',
+    description: 'Бесплатная разработка комплексного решения для активно развивающегося бизнеса.',
     features: [
-      'Каталог товаров',
+      'Каталог товаров или услуг',
       'Расширенная фильтрация',
-      'Формы заказа',
+      'Формы заказа и обратной связи',
       'Приоритетная поддержка',
       'Ежедневные обновления',
       'Пользовательские интеграции',
@@ -578,6 +784,10 @@ const testimonials = [
 
 const faqs = [
   {
+    question: 'Действительно ли создание сайта бесплатно?',
+    answer: 'Да, мы действительно создаем сайт для вас абсолютно бесплатно. Вы оплачиваете только ежемесячную подписку, которая включает хостинг, техническую поддержку и обслуживание сайта. Никаких скрытых платежей за разработку нет.',
+  },
+  {
     question: 'Что происходит, если я решу отменить подписку?',
     answer: 'Если вы решите отменить подписку, ваш сайт будет активен до конца оплаченного периода. После этого сайт будет деактивирован, но данные сохранятся в течение 30 дней, чтобы вы могли вернуться к использованию услуги или сделать резервную копию. Никаких штрафов за отмену подписки не предусмотрено.',
   },
@@ -586,20 +796,16 @@ const faqs = [
     answer: 'Да, хостинг полностью включен в стоимость подписки. Вам не нужно отдельно оплачивать серверы, домены или SSL-сертификаты. Мы берем на себя все технические аспекты размещения вашего сайта, включая регулярное резервное копирование и обновление системы безопасности.',
   },
   {
+    question: 'Что входит в базовый тариф?',
+    answer: 'В базовый тариф входит бесплатное создание одностраничного лендинга с адаптивным дизайном, базовое SEO, хостинг и ежемесячные обновления. Отличие от более дорогих тарифов заключается в отсутствии формы обратной связи и некоторых других расширенных функций.',
+  },
+  {
     question: 'Могу ли я переносить свой сайт на другой хостинг?',
     answer: 'Да, вы сохраняете полные права на дизайн и контент вашего сайта. Если вы решите перейти на самостоятельное обслуживание, мы поможем экспортировать ваш сайт и предоставим всю необходимую техническую информацию для миграции на ваш собственный хостинг.',
   },
   {
-    question: 'Как рассчитывается стоимость подписки?',
-    answer: 'Стоимость подписки зависит от выбранного тарифа и рассчитывается на ежемесячной основе. Никаких скрытых платежей нет. В стоимость включены: хостинг, техническая поддержка, обновления безопасности и базовые изменения контента. За дополнительные услуги и существенные изменения может взиматься отдельная плата.',
-  },
-  {
     question: 'Могу ли я изменить тариф подписки?',
     answer: 'Да, вы можете в любой момент перейти на более высокий тариф, получив доступ к дополнительным функциям и возможностям. Переход на более низкий тариф возможен при следующем продлении подписки. Мы стараемся обеспечить максимальную гибкость для вашего бизнеса.',
-  },
-  {
-    question: 'Что произойдет, если мне понадобятся дополнительные функции, не включенные в мой тариф?',
-    answer: 'Мы предлагаем гибкий подход. Вы можете либо перейти на более высокий тариф, либо заказать разработку дополнительных функций как отдельную услугу. Наша команда всегда готова обсудить ваши потребности и предложить наиболее оптимальное решение.',
   },
 ]
 
