@@ -71,6 +71,16 @@ const projects = [
     technologies: ['React', 'TypeScript', 'Node.js', 'Chart.js', 'MongoDB'],
     url: '#',
   },
+  {
+    id: 7,
+    title: 'DoCake — Онлайн-кондитерская',
+    category: 'shop',
+    description: 'Интернет-магазин тортов с возможностью заказа и доставки. Современный дизайн с каталогом продукции и онлайн-конструктором тортов.',
+    imageUrl: '/portfolio/do-cake-preview.png',
+    results: 'Рост продаж на 35% после запуска онлайн-заказов. Улучшение пользовательского опыта благодаря интуитивному интерфейсу.',
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'Vercel'],
+    url: 'https://do-cake.vercel.app',
+  },
 ]
 
 export default function Portfolio() {

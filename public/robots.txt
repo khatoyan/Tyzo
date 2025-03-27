@@ -1,11 +1,29 @@
-# Allow all crawlers
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# Disallow pages that don't need to be indexed
+# Разрешаем индексацию основных страниц
+Allow: /blog
+Allow: /about
+Allow: /services
+Allow: /portfolio
+Allow: /prices
+Allow: /contact
+
+# Запрещаем индексацию служебных страниц
+Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /*?*
 
-# Sitemap
-Sitemap: https://tyzo.ru/sitemap.xml 
+# Указываем путь к карте сайта
+Sitemap: https://tyzo.ru/sitemap.xml
+
+# Инструкции для Google
+User-agent: Googlebot
+Allow: /
+
+# Инструкции для Яндекс
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign 

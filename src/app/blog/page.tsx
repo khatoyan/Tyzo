@@ -7,63 +7,69 @@ import Link from 'next/link'
 const blogPosts = [
   {
     id: 1,
-    title: 'Как увеличить конверсию вашего сайта на 30% с помощью UX-дизайна',
-    category: 'UX-дизайн',
-    excerpt: 'Узнайте, как простые изменения в пользовательском опыте могут значительно увеличить конверсию на вашем сайте.',
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    date: '12 мая 2023',
+    title: 'Как создать сайт, который привлекает клиентов',
+    category: 'web-design',
+    excerpt: 'Узнайте о ключевых элементах дизайна и контента, которые помогут вашему сайту привлечь и удержать потенциальных клиентов.',
+    imageUrl: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+    date: '12 мая 2025',
     readTime: '6 мин',
-    slug: 'increase-conversion-with-ux-design',
+    author: 'Алексей Иванов',
+    slug: 'how-to-attract-clients-with-website',
   },
   {
     id: 2,
-    title: '5 трендов веб-дизайна, которые будут популярны в 2023 году',
-    category: 'Веб-дизайн',
-    excerpt: 'Рассмотрим пять основных тенденций в веб-дизайне, которые будут актуальны в этом году, и как их можно применить на практике.',
-    imageUrl: 'https://images.unsplash.com/photo-1523726491678-bf852e717f6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    date: '3 марта 2023',
-    readTime: '8 мин',
-    slug: 'web-design-trends-2023',
+    title: '5 трендов веб-дизайна, которые будут популярны в 2025 году',
+    category: 'trends',
+    excerpt: 'Обзор самых актуальных и инновационных тенденций в веб-дизайне, которые будут определять облик интернета в ближайшем будущем.',
+    imageUrl: 'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+    date: '3 марта 2025',
+    readTime: '4 мин',
+    author: 'Мария Петрова',
+    slug: 'web-design-trends-2025',
   },
   {
     id: 3,
-    title: 'Оптимизация скорости загрузки: почему это важно и как это сделать',
-    category: 'Производительность',
-    excerpt: 'Медленно загружающийся сайт может стоить вам клиентов. Узнайте, как оптимизировать скорость загрузки вашего сайта.',
-    imageUrl: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    date: '17 апреля 2023',
-    readTime: '10 мин',
-    slug: 'page-speed-optimization',
+    title: 'Почему важно оптимизировать скорость загрузки сайта',
+    category: 'optimization',
+    excerpt: 'Скорость загрузки сайта напрямую влияет на конверсию, SEO-рейтинг и удержание пользователей. Рассказываем, как её улучшить.',
+    imageUrl: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+    date: '17 апреля 2025',
+    readTime: '7 мин',
+    author: 'Дмитрий Сидоров',
+    slug: 'website-speed-optimization',
   },
   {
     id: 4,
-    title: 'Корпоративный сайт или лендинг: что выбрать для вашего бизнеса',
-    category: 'Бизнес',
-    excerpt: 'Разбираемся в различиях между корпоративным сайтом и лендингом, и как выбрать оптимальное решение для вашего бизнеса.',
-    imageUrl: 'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    date: '29 января 2023',
-    readTime: '7 мин',
-    slug: 'corporate-site-vs-landing-page',
+    title: 'Основы SEO для начинающих предпринимателей',
+    category: 'seo',
+    excerpt: 'Простое руководство по SEO-оптимизации для тех, кто только начинает свой бизнес и хочет привлечь органический трафик на свой сайт.',
+    imageUrl: 'https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+    date: '29 января 2025',
+    readTime: '9 мин',
+    author: 'Анна Смирнова',
+    slug: 'seo-basics-for-entrepreneurs',
   },
   {
     id: 5,
-    title: 'Как правильно планировать редизайн сайта: пошаговое руководство',
-    category: 'Веб-дизайн',
-    excerpt: 'Планирование редизайна сайта может быть сложной задачей. Наше пошаговое руководство поможет вам избежать распространенных ошибок.',
-    imageUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    date: '8 февраля 2023',
-    readTime: '12 мин',
-    slug: 'website-redesign-guide',
+    title: 'Как выбрать правильный хостинг для вашего сайта',
+    category: 'hosting',
+    excerpt: 'Обзор различных типов хостинга, их преимуществ и недостатков, чтобы помочь вам сделать осознанный выбор для вашего проекта.',
+    imageUrl: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+    date: '8 февраля 2025',
+    readTime: '5 мин',
+    author: 'Игорь Николаев',
+    slug: 'choosing-right-hosting',
   },
   {
     id: 6,
-    title: 'SEO для начинающих: основные принципы и практики',
-    category: 'SEO',
-    excerpt: 'Освойте основы поисковой оптимизации для повышения видимости вашего сайта в результатах поиска.',
-    imageUrl: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    date: '21 июня 2023',
-    readTime: '9 мин',
-    slug: 'seo-for-beginners',
+    title: 'Мобильная версия сайта: почему это необходимо в 2025',
+    category: 'mobile',
+    excerpt: 'С ростом мобильного трафика адаптивный дизайн стал не просто опцией, а необходимостью. Разбираемся, почему это важно.',
+    imageUrl: 'https://images.unsplash.com/photo-1526406915894-7bcd65f60845?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80',
+    date: '21 июня 2025',
+    readTime: '6 мин',
+    author: 'Елена Васильева',
+    slug: 'mobile-website-importance',
   },
 ]
 
@@ -79,6 +85,10 @@ const categories = [
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -89,6 +99,61 @@ export default function Blog() {
     
     return matchesSearch && matchesCategory
   })
+
+  // Validate email function
+  const validateEmail = (email: string) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+
+  // Handle email submit
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      setEmailError('Пожалуйста, введите ваш email');
+      return;
+    }
+    
+    if (!validateEmail(email)) {
+      setEmailError('Пожалуйста, введите корректный email');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('https://formspree.io/f/myzekkqz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, formType: 'blog-subscription' }),
+      });
+      
+      if (response.ok) {
+        setIsSubmitted(true);
+        setEmail('');
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 3000);
+      } else {
+        alert('Произошла ошибка при подписке. Пожалуйста, попробуйте еще раз.');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      alert('Произошла ошибка при подписке. Пожалуйста, попробуйте еще раз.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  // Handle email input change
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    setEmailError('');
+  };
 
   return (
     <div className="min-h-screen pb-20">
@@ -247,37 +312,67 @@ export default function Blog() {
             </p>
           </motion.div>
           
-          <motion.div 
-            className="mx-auto mt-10 max-w-md"
+          <motion.div
+            className="mx-auto mt-10 max-w-2xl rounded-3xl ring-1 ring-gray-200 lg:mx-0 lg:flex lg:max-w-none"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <form className="sm:flex gap-2">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="w-full rounded-md border-0 px-5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm"
-                placeholder="Ваш email"
-              />
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-3 sm:mt-0 sm:ml-3">
-                <button
-                  type="submit"
-                  className="flex w-full items-center justify-center rounded-md bg-primary-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
+            <div className="p-8 sm:p-10 lg:flex-auto">
+              <h3 className="text-2xl font-bold tracking-tight text-gray-900">Подпишитесь на наши новости</h3>
+              <p className="mt-4 text-base leading-7 text-gray-600">
+                Будьте в курсе последних тенденций веб-разработки, советов по маркетингу и историй успеха наших клиентов.
+              </p>
+              
+              {isSubmitted ? (
+                <motion.div 
+                  className="mt-6 p-4 bg-green-50 rounded-lg text-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
                 >
-                  Подписаться
-                </button>
-              </motion.div>
-            </form>
-            <p className="mt-3 text-center text-sm text-gray-500">
-              Мы ценим вашу конфиденциальность. Отписаться можно в любой момент.
-            </p>
+                  <svg className="h-10 w-10 mx-auto text-green-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <h4 className="text-lg font-semibold text-gray-900">Спасибо за подписку!</h4>
+                  <p className="text-gray-600">Вы будете получать все наши обновления.</p>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="mt-6 sm:flex gap-2">
+                  <div className="w-full">
+                    <label htmlFor="email-address" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="email-address"
+                      name="email"
+                      type="email"
+                      value={email}
+                      onChange={handleEmailChange}
+                      autoComplete="email"
+                      required
+                      className={`w-full rounded-md border-0 px-5 py-3 text-gray-900 shadow-sm ring-1 ring-inset ${emailError ? 'ring-red-300' : 'ring-gray-300'} placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm`}
+                      placeholder="Ваш email"
+                    />
+                    {emailError && (
+                      <p className="mt-1 text-sm text-red-600">{emailError}</p>
+                    )}
+                  </div>
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-3 sm:mt-0 sm:ml-3">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`flex w-full items-center justify-center rounded-md bg-primary-600 px-3 py-3 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    >
+                      {isSubmitting ? 'Подписка...' : 'Подписаться'}
+                    </button>
+                  </motion.div>
+                </form>
+              )}
+              <p className="mt-3 text-center text-sm text-gray-500">
+                Мы ценим вашу конфиденциальность. Отписаться можно в любой момент.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
