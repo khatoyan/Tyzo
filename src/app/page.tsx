@@ -135,10 +135,10 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "Tyzo - Бесплатное создание сайтов по подписке",
-            "url": "https://tyzo.ru/",
+            "url": "https://tyzo.site/",
             "potentialAction": {
               "@type": "SearchAction",
-              "target": "https://tyzo.ru/search?q={search_term_string}",
+              "target": "https://tyzo.site/search?q={search_term_string}",
               "query-input": "required name=search_term_string"
             },
             "description": "Бесплатная разработка лендингов, корпоративных сайтов и интернет-магазинов. Оплата только за подписку, включающую хостинг и техническое обслуживание.",
@@ -154,8 +154,8 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "Tyzo",
-            "url": "https://tyzo.ru",
-            "logo": "https://tyzo.ru/icon.svg",
+            "url": "https://tyzo.site",
+            "logo": "https://tyzo.site/icon.svg",
             "description": "Компания, специализирующаяся на бесплатном создании сайтов с оплатой только за подписку.",
             "offers": {
               "@type": "Offer",

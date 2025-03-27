@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://tyzo.ru/</loc>
+    <loc>https://tyzo.site/</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tyzo.ru/about</loc>
+    <loc>https://tyzo.site/about</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tyzo.ru/services</loc>
+    <loc>https://tyzo.site/services</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tyzo.ru/portfolio</loc>
+    <loc>https://tyzo.site/portfolio</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tyzo.ru/blog</loc>
+    <loc>https://tyzo.site/blog</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tyzo.ru/prices</loc>
+    <loc>https://tyzo.site/prices</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://tyzo.ru/contact</loc>
+    <loc>https://tyzo.site/contact</loc>
     <lastmod>2025-03-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

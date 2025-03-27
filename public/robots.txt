@@ -17,7 +17,7 @@ Disallow: /_next/
 Disallow: /*?*
 
 # Указываем путь к карте сайта
-Sitemap: https://tyzo.ru/sitemap.xml
+Sitemap: https://tyzo.site/sitemap.xml
 
 # Инструкции для Google
 User-agent: Googlebot
