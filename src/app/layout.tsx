@@ -86,7 +86,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0284c7" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="yandex-verification" content="6a6357306f3a3be1" />
+        <meta name="yandex-verification" content="3163d949610c2e94" />
         <meta name="google-site-verification" content="F_BBUwLgzpsOT41mTJKT3_1F4v2suRw3OxQEX7pfePk" />
       </head>
       <body className={`${inter.className} h-full antialiased`}>
