@@ -57,16 +57,16 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'F_BBUwLgzpsOT41mTJKT3_1F4v2suRw3OxQEX7pfePk',
-    yandex: '71c03782a550a463',
+    yandex: '3163d949610c2e94',
   },
   icons: {
     icon: [
-      { url: '/favicons/favicon.ico' },
+      { url: '/favicon.ico' },
       { url: '/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
     ],
     apple: '/favicons/apple-touch-icon.png',
-    shortcut: '/favicons/favicon.ico',
+    shortcut: '/favicon.ico',
   },
   category: 'technology',
 }
@@ -79,15 +79,9 @@ export default function RootLayout({
   return (
     <html lang="ru" className="h-full scroll-smooth">
       <head>
-        <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicons/favicon-32x32.png" type="image/png" sizes="32x32" />
-        <link rel="icon" href="/favicons/favicon-16x16.png" type="image/png" sizes="16x16" />
-        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0284c7" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="yandex-verification" content="3163d949610c2e94" />
-        <meta name="google-site-verification" content="F_BBUwLgzpsOT41mTJKT3_1F4v2suRw3OxQEX7pfePk" />
       </head>
       <body className={`${inter.className} h-full antialiased`}>
         {/* JSON-LD structured data for Organization */}
