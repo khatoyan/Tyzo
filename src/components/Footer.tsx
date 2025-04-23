@@ -83,7 +83,7 @@ export default function Footer() {
                 <h3 className="text-sm font-semibold leading-6 text-gray-900">Контакты</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   <li className="text-sm leading-6 text-gray-600">
-                    <span className="font-semibold">Телефон:</span> <a href="tel:89232223773" className="hover:text-gray-900">8 923 222-37-73</a>
+                    <span className="font-semibold">Телефон:</span> <a href="tel:89954377300" className="hover:text-gray-900">8 995 437-73-00</a>
                   </li>
                   <li className="text-sm leading-6 text-gray-600">
                     <span className="font-semibold">Email:</span> <a href="mailto:tyzo.site.company@gmail.com" className="hover:text-gray-900">tyzo.site.company@gmail.com</a>

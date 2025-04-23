@@ -170,7 +170,7 @@ export default function Contact() {
                       <span className="sr-only">Телефон</span>
                       <PhoneIcon className="h-7 w-6 text-primary-600" aria-hidden="true" />
                     </dt>
-                    <dd><a href="tel:89232223773" className="hover:text-primary-600">8 923 222-37-73</a></dd>
+                    <dd><a href="tel:89954377300" className="hover:text-primary-600">8 995 437-73-00</a></dd>
                   </motion.div>
                   <motion.div 
                     className="flex gap-x-4"

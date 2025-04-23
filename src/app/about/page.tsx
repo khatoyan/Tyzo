@@ -2,33 +2,6 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-const teamMembers = [
-  {
-    name: 'Алексей Петров',
-    role: 'Основатель / CEO',
-    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80',
-    bio: 'Алексей имеет более 10 лет опыта в веб-разработке и управлении проектами. До основания Tyzo работал техническим директором в крупной IT-компании.',
-  },
-  {
-    name: 'Елена Смирнова',
-    role: 'Арт-директор',
-    imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80',
-    bio: 'Елена — опытный дизайнер с безупречным чувством стиля. Она специализируется на создании современных и функциональных пользовательских интерфейсов.',
-  },
-  {
-    name: 'Максим Иванов',
-    role: 'Ведущий разработчик',
-    imageUrl: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80',
-    bio: 'Максим — опытный разработчик полного стека с глубокими знаниями в области React, Node.js и современных веб-технологий.',
-  },
-  {
-    name: 'Анна Козлова',
-    role: 'Менеджер проектов',
-    imageUrl: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80',
-    bio: 'Анна обеспечивает своевременную доставку проектов и поддерживает тесную связь с клиентами на протяжении всего процесса разработки.',
-  },
-]
-
 const values = [
   {
     name: 'Инновации',
@@ -216,7 +189,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Company Overview Section */}
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <motion.div 
@@ -225,44 +198,35 @@ export default function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-base font-semibold leading-7 text-primary-600">Наша команда</h2>
+            <h2 className="text-base font-semibold leading-7 text-primary-600">О компании</h2>
             <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Познакомьтесь с профессионалами, которые делают Tyzo возможным
+              Наша команда профессионалов
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              За каждым успешным проектом стоит команда талантливых и увлеченных людей.
+              Наша команда состоит из опытных специалистов в области веб-разработки, дизайна и маркетинга.
             </p>
           </motion.div>
           
           <motion.div 
-            className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-4"
+            className="mx-auto mt-16 max-w-5xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            {teamMembers.map((member, index) => (
-              <motion.div 
-                key={member.name}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -5 }}
-              >
-                <div className="relative mx-auto h-40 w-40 overflow-hidden rounded-full">
-                  <motion.img
-                    className="h-full w-full object-cover"
-                    src={member.imageUrl}
-                    alt={member.name}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-                <h3 className="mt-6 text-xl font-semibold leading-7 tracking-tight text-gray-900">{member.name}</h3>
-                <p className="text-sm leading-6 text-primary-600">{member.role}</p>
-                <p className="mt-2 text-sm leading-6 text-gray-600">{member.bio}</p>
-              </motion.div>
-            ))}
+            <div className="bg-white rounded-2xl p-8 shadow-sm ring-1 ring-gray-200/50">
+              <p className="text-lg leading-8 text-gray-600 mb-6">
+                С момента основания наша компания выросла в значимого игрока на рынке веб-разработки, специализирующегося на создании высококачественных сайтов по модели подписки.
+              </p>
+              <p className="text-lg leading-8 text-gray-600 mb-6">
+                Наша команда объединяет талантливых разработчиков, креативных дизайнеров, опытных проектных менеджеров и специалистов по цифровому маркетингу. Вместе мы создаем не просто сайты, а эффективные инструменты для развития бизнеса наших клиентов.
+              </p>
+              <p className="text-lg leading-8 text-gray-600 mb-6">
+                Мы гордимся тем, что разрабатываем инновационные веб-решения, которые помогают компаниям разных масштабов успешно конкурировать в цифровом пространстве. Наш подход основан на глубоком понимании потребностей клиентов и современных тенденций веб-разработки.
+              </p>
+              <p className="text-lg leading-8 text-gray-600">
+                За годы работы мы реализовали более 200 проектов в различных отраслях: от малого бизнеса до крупных корпораций. Каждый проект для нас — это возможность создать что-то уникальное и полезное для наших клиентов.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
